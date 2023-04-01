@@ -10,4 +10,5 @@ jobs:
       - name: Run tests
         run: |
           pip install mypy
+          pip install -r  services/TwitterSA/requirements.txt
           mypy services/TwitterSA
