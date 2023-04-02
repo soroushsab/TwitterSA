@@ -1,10 +1,10 @@
 from typing import Union
-from helpers.GetData import get_data_from_snscrape
-from helpers.SaveCSV import save_data_frame
-from helpers.Preprocess import create_data
-from helpers.CalculatePolarity import calculate_polarities
-from helpers.CalculateEmotions import calculate_emotions
-from helpers.PrintWordCloud import print_word_cloud
+from .helpers.GetData import get_data_from_snscrape
+from .helpers.SaveCSV import save_data_frame
+from .helpers.Preprocess import create_data
+from .helpers.CalculatePolarity import calculate_polarities
+from .helpers.CalculateEmotions import calculate_emotions
+from .helpers.PrintWordCloud import print_word_cloud
 
 
 class TwiiterSA:
