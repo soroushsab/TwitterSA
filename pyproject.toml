@@ -6,7 +6,7 @@ authors = ["Soroush"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "3.10.7"
+python = ">=3.9,<4.0"
 pandas = "1.5.3"
 nrclex = "3.0.0"
 wordcloud = "1.8.2.2"
