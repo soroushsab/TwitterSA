@@ -8,7 +8,7 @@ from .helpers.CalculateEmotions import calculate_emotions
 from .helpers.PrintWordCloud import print_word_cloud
 
 
-class TwiiterSA:
+class TwitterSA:
     """Twitter Sentiment Analysis."""
 
     """We create an object of this class which is going to do all process
