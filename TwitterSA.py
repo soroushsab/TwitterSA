@@ -7,7 +7,7 @@ from .helpers.CalculateEmotions import calculate_emotions
 from .helpers.PrintWordCloud import print_word_cloud
 
 
-class TwiiterSA:
+class TwitterSA:
     """We create an object of this class which is going to do all process
     with the same object. You can create an object for each query"""
 
