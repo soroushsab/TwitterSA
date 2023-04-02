@@ -1,10 +1,10 @@
 [flake8]
-; select = 
-; ignore = 
+; select =
+; ignore =
 max-line-length = 150
 max-complexity = 10
 decstring-convention = google
-; per-file-ignore = 
+; per-file-ignore =
 rst-role = class, func
 rst-directives = deptecated
-; extend-immutable-calls = 
+; extend-immutable-calls =

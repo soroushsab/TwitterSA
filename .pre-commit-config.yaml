@@ -1,4 +1,31 @@
 repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-added-large-files
+        name: check-added-large-files
+        entry: python -m pre_commit_hooks.check_added_large_files
+        language: python
+      - id: check-toml
+        name: check-toml
+        entry: python -m pre_commit_hooks.check_toml
+        language: python
+        types: [toml]
+      - id: check-yaml
+        name: check-yaml
+        entry: python -m pre_commit_hooks.check_yaml
+        language: python
+        types: [yaml]
+      - id: end-of-file-fixer
+        name: end-of-file-fixer
+        entry: python -m pre_commit_hooks.end_of_file_fixer
+        language: python
+        types: [text]
+      - id: trailing-whitespace
+        name: trailing-whitespace
+        entry: python -m pre_commit_hooks.trailing_whitespace_fixer
+        language: python
+        types: [text]
   - repo: local
     hooks:
       - id: black
@@ -7,33 +34,9 @@ repos:
         language: system
         types: [python]
         require_serial: true
-      - id: check-added-large-files
-        name: check-added-large-files
-        entry: check-added-large-files
-        language: system
-      - id: check-toml
-        name: check-toml
-        entry: check-toml
-        language: system
-        types: [toml]
-      - id: check-yaml
-        name: check-yaml
-        entry: check-yaml
-        language: system
-        types: [yaml]
-      - id: end-of-file-fixer
-        name: end-of-file-fixer
-        entry: end-of-file-fixer
-        language: system
-        types: [text]
       - id: flake8
         name: flake8
         entry: flake8
         language: system
         types: [python]
         require_serial: true
-      - id: trailing-whitespace
-        name: trailing-whitespace
-        entry: trailing-whitespace-fixer
-        language: system
-        types: [text]
