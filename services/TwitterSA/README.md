@@ -21,6 +21,14 @@ Befor using this you need to install Prerequisites in requirement.txt.
 
 ## Usage
 
+Download the repo and copy folder """ TwitterSA/services/TwitterSA """ into your python file directory.
+
+Try to import it in this way:
+```
+from TwitterSA.TwitterSA import TwitterSA
+```
+
+
 Create an object:
 
 ```
