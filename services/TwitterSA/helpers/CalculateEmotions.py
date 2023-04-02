@@ -1,10 +1,10 @@
+"""Calculate emotions."""
 from nrclex import NRCLex
 import pandas as pd
 
 
 def calculate_emotions(data: pd.DataFrame) -> pd.DataFrame:
     """To calculate polarity."""
-
     # define lists
     fears: list = []
     angers: list = []
@@ -21,11 +21,19 @@ def calculate_emotions(data: pd.DataFrame) -> pd.DataFrame:
     for _, row in data.iterrows():
         fears.append((NRCLex(row["normalized tweet"]).affect_frequencies)["fear"])
         angers.append((NRCLex(row["normalized tweet"]).affect_frequencies)["anger"])
-        anticipations.append((NRCLex(row["normalized tweet"]).affect_frequencies)["anticipation"])
+        anticipations.append(
+            (NRCLex(row["normalized tweet"]).affect_frequencies)["anticipation"]
+        )
         trusts.append((NRCLex(row["normalized tweet"]).affect_frequencies)["trust"])
-        surprises.append((NRCLex(row["normalized tweet"]).affect_frequencies)["surprise"])
-        positives.append((NRCLex(row["normalized tweet"]).affect_frequencies)["positive"])
-        negatives.append((NRCLex(row["normalized tweet"]).affect_frequencies)["negative"])
+        surprises.append(
+            (NRCLex(row["normalized tweet"]).affect_frequencies)["surprise"]
+        )
+        positives.append(
+            (NRCLex(row["normalized tweet"]).affect_frequencies)["positive"]
+        )
+        negatives.append(
+            (NRCLex(row["normalized tweet"]).affect_frequencies)["negative"]
+        )
         sadnesss.append((NRCLex(row["normalized tweet"]).affect_frequencies)["sadness"])
         disgusts.append((NRCLex(row["normalized tweet"]).affect_frequencies)["disgust"])
         joys.append((NRCLex(row["normalized tweet"]).affect_frequencies)["joy"])

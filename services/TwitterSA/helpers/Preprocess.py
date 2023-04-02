@@ -1,3 +1,4 @@
+"""Text process."""
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import pandas as pd
@@ -8,7 +9,6 @@ import string
 
 def text_process(text: str) -> str:
     """To pre process a text."""
-
     # Tokenize the text
     tokens = text.split(" ")
 
@@ -152,7 +152,9 @@ def text_process(text: str) -> str:
     tokens = [word.lower() for word in tokens]
 
     # remove to punctuation
-    tokens = [word.translate(str.maketrans("", "", string.punctuation)) for word in tokens]
+    tokens = [
+        word.translate(str.maketrans("", "", string.punctuation)) for word in tokens
+    ]
 
     # Convert to lowercase
     tokens = [word.replace(" ", "") for word in tokens]
@@ -160,7 +162,12 @@ def text_process(text: str) -> str:
     # Remove stopwords and redundant words or letters
     stop_words = set(stopwords.words("english"))
     tokens = [
-        el2 for el2 in tokens if (el2 not in stop_words or el2 == "not") and not el2.startswith("http") and not el2.startswith("@") and len(el2) > 1
+        el2
+        for el2 in tokens
+        if (el2 not in stop_words or el2 == "not")
+        and not el2.startswith("http")
+        and not el2.startswith("@")
+        and len(el2) > 1
     ]
 
     # Stem the words
@@ -172,4 +179,7 @@ def text_process(text: str) -> str:
 
 def create_data(tweets: pd.DataFrame) -> pd.DataFrame:
     """To create pre-processed data from tweets."""
-    return pd.DataFrame(data=[text_process(row["rawContent"]) for _, row in tweets.iterrows()], columns=["normalized tweet"])
+    return pd.DataFrame(
+        data=[text_process(row["rawContent"]) for _, row in tweets.iterrows()],
+        columns=["normalized tweet"],
+    )
