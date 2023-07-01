@@ -1,4 +1,4 @@
-# Twitter Sentiment Analizor
+# Twitter Sentiment Analyzer
 
 This is a python library that gathered a few number of useful packages and to make the process of twitter sentiment analysis (from getting the tweets) more structured.
 
@@ -7,13 +7,13 @@ This project is not the best but I will be more than happy to invite you to cont
 I tried to follow the standards of programming so it will be easy to understand and extend
 
 NOTE:
-IT IS IMPORTANT TO KNOW THIS PACKAGE IS BASICLY WORKING WITH OTHER PYTHON LIBRARIES. SO IT IS MOSTLY DEPEND ON THEM AND IF THERE IS AN ISSUE FROM THEM YOU MAY FACE ISSUE USING THIS CLASS.
+IT IS IMPORTANT TO KNOW THIS PACKAGE IS BASICALLY WORKING WITH OTHER PYTHON LIBRARIES. SO IT IS MOSTLY DEPEND ON THEM AND IF THERE IS AN ISSUE FROM THEM YOU MAY FACE ISSUE USING THIS CLASS.
 
 ## Getting Started
 
 ### Prerequisites
 
-Befor using this you need to install Prerequisites in requirement.txt.
+Before using this you need to install Prerequisites in requirement.txt.
 
 ### Installation
 
@@ -24,10 +24,10 @@ Befor using this you need to install Prerequisites in requirement.txt.
 Download the repo into your python file directory.
 
 Try to import it in this way:
+
 ```
 from TwitterSA.TwitterSA import TwitterSA
 ```
-
 
 Create an object:
 
@@ -51,11 +51,21 @@ max is the max number of tweets that you want to get from twitter. The default i
 object.get_data(10)
 ```
 
-You can save the data anywhere with anyname you want as a csv file:
+You can save the data anywhere with any name you want as a csv file:
 
 ```
-object.save_to_csv("Any address" , "any name")
+object.save_to_csv("any name", "Any directory")
 ```
+
+On top of that, you can read a csv data:
+NOTE: data needs to have only a column for plain texts, and it can also have the actual polarity number.
+
+```
+object.upload_data(isPreProcessed= True/False, "any name", "Any directory")
+```
+
+isPreProcessed will True if your data is already normalized and the text column name should be "normalized tweet"
+isPreProcessed will False if your data is not normalized and the text column name should be "rawContent"
 
 This is the step to do the pre processing, is is mandatory unless you want to change it in the code:
 
