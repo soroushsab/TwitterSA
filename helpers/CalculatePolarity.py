@@ -1,30 +1,28 @@
-from textblob import TextBlob
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-from afinn import Afinn
 import pandas as pd
+import os
+import importlib
 
 
 def calculate_polarities(data: pd.DataFrame) -> pd.DataFrame:
     """To calculate polarity."""
 
-    # define afinn and vader objects
-    afn = Afinn()
-    sid_obj = SentimentIntensityAnalyzer()
+    folder_path = "helpers\\SentimentAnalysisModels"
 
-    # define lists
-    textblob_results: list = []
-    afinn_results: list = []
-    vader_results: list = []
+    for filename in os.listdir(folder_path):
+        if filename.endswith(".py"):  # Process only Python files
+            module_path = os.path.join(folder_path, filename.split(".")[0])  # Get the full path to the module
 
-    # calculates
-    for _, row in data.iterrows():
-        textblob_results.append(TextBlob(row["normalized tweet"]).sentiment.polarity)
-        afinn_results.append(afn.score(row["normalized tweet"]))
-        vader_results.append(sid_obj.polarity_scores(row["normalized tweet"])["compound"])
+            function_name = "auto_tag"
 
-    # Add to result data
-    data["Text Blob"] = textblob_results
-    data["Afinn"] = textblob_results
-    data["Vader"] = textblob_results
+            module_path = module_path.replace("\\", ".")
 
+            module = importlib.import_module(module_path)  # Import the module dynamically
+
+            if hasattr(module, function_name):  # Check if the module has the specified function
+                function = getattr(module, function_name)  # Get the function from the module
+
+                data = function(data)  # Call the function with the provided data
+                print(f"Processed data using '{module_path}.{function_name}'")
+
+    print("Polarity calculation has finished!")
     return data
